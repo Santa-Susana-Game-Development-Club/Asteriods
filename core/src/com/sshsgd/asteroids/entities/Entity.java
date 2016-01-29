@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class Entity {
 
-	private Vector2 vel;
-	private Vector2 pos;
+	protected Vector2 vel;
+	protected Vector2 pos;
 	
 	public Entity() {
 		vel = new Vector2();

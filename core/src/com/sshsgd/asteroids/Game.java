@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.sshsgd.asteroids.MyConstants.States;
 import com.sshsgd.asteroids.managers.*;
+import com.sshsgd.asteroids.managers.input.*;
 
 public class Game extends ApplicationAdapter {
 	
@@ -35,6 +36,8 @@ public class Game extends ApplicationAdapter {
 		fpsTime = 0;
 		
 		gsm = new GameStateManager(defaultState);
+		
+		Gdx.input.setInputProcessor(new MyInputProcessor());
 	}
 
 	@Override
@@ -56,6 +59,8 @@ public class Game extends ApplicationAdapter {
 			fpsTime = 0;
 		}
 		Gdx.graphics.setTitle(String.format("%s | FPS: %d", Game.Title, Game.fps));
+		
+		MyInput.update();
 	}
 
 	@Override

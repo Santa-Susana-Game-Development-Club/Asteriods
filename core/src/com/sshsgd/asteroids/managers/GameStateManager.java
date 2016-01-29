@@ -15,10 +15,11 @@ public class GameStateManager {
 	public GameStateManager(States state) {
 		sb = new SpriteBatch();
 		sr = new ShapeRenderer();
+		setState(state);
 	}
 	
 	public void setState(States state) {
-		if(currentState == null) currentState.dispose();
+		if(currentState != null) currentState.dispose();
 		if(state == States.Splash) {
 			currentState = new SplashState(this);
 		}
