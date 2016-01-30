@@ -3,6 +3,7 @@ package com.sshsgd.asteroids.gamestates;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -34,7 +35,7 @@ public class PlayState extends GameState {
 		view.update((int)Game.SIZE.x, (int)Game.SIZE.y, true);
 		p = new Player();
 		asteroids = new Array<Asteroid>();
-		asteroids.add(new Asteroid(100, 100, Size.Large));
+		asteroids.add(new Asteroid(MathUtils.random(MyConstants.WOLRD_WIDTH), MathUtils.random(MyConstants.WORLD_HEIGHT), Size.Large));
 	}
 
 	@Override
