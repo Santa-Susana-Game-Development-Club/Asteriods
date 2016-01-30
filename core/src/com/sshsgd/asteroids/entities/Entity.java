@@ -8,6 +8,8 @@ public abstract class Entity {
 
 	protected Vector2 vel;
 	protected Vector2 pos;
+	protected float radians, movementR, speed, radius;
+	protected Vector2[] vertices;
 	
 	public Entity() {
 		vel = new Vector2();
