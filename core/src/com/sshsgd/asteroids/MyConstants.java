@@ -1,6 +1,7 @@
 package com.sshsgd.asteroids;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
@@ -15,22 +16,9 @@ public class MyConstants {
 	public static enum Direction {
 		LEFT, RIGHT
 	}
-
-	public static int NUM_TOUCHES = 20;
 	
 	public static final int WOLRD_WIDTH = 1280;
 	public static final int WORLD_HEIGHT = 720;
-	
-	public static final String[] LEVELS = {
-		"Tutorial", "San Buenaventura"
-	};
-	
-	public static String getLevel(int index) {
-		if(!(index < 0 || index >= LEVELS.length)) {
-			return LEVELS[index];
-		}
-		return "No Such Level";
-	}
 	
 	public static Vector2 randomVelocity(float speed) {
 		return velocityFromAngle(MathUtils.random(MathUtils.PI2), speed);
@@ -174,4 +162,12 @@ public class MyConstants {
 	public static int sixteenNineResolution(int width) {
 		return (int) ((width * 9f) / 16f);
 	}
+	
+	public static void drawShapeFromVertexArray(ShapeRenderer sr, Vector2[] vertices) {
+		for (int i = 1; i < vertices.length; i++) {
+			sr.line(vertices[i - 1], vertices[i]);
+		}
+		sr.line(vertices[0], vertices[vertices.length - 1]);
+	}
+	
 }
