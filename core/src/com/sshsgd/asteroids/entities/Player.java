@@ -17,6 +17,8 @@ public class Player extends Entity {
 	
 	boolean thrust;
 	
+	boolean alive;
+	
 	public Player() {
 		super();
 		
@@ -34,6 +36,8 @@ public class Player extends Entity {
 		}
 		
 		pos.set(MyConstants.WOLRD_WIDTH * .5f, MyConstants.WORLD_HEIGHT * .5f);
+		
+		alive = true;
 		
 	}
 	
@@ -105,7 +109,7 @@ public class Player extends Entity {
 
 	@Override
 	public void draw(SpriteBatch sb, ShapeRenderer sr, float dt) {
-		sr.setColor(Color.WHITE);
+		sr.setColor(Color.BLUE);
 		MyConstants.drawShapeFromVertexArray(sr, vertices);
 		sr.setColor(MyConstants.randomColor());
 		if(thrust) {
@@ -119,6 +123,14 @@ public class Player extends Entity {
 	public void dispose() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
 
 }
