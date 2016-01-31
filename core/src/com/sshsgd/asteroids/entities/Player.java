@@ -98,8 +98,8 @@ public class Player extends Entity {
 		pos.x += vel.x;
 		pos.y += vel.y;
 
-		pos.x = MyConstants.wrap(pos.x, - radius, MyConstants.WOLRD_WIDTH + radius);
-		pos.y = MyConstants.wrap(pos.y, - radius, MyConstants.WORLD_HEIGHT + radius);
+		pos.x = MyConstants.wrap(pos.x, - radius * 2, MyConstants.WOLRD_WIDTH + radius * 2);
+		pos.y = MyConstants.wrap(pos.y, - radius * 2, MyConstants.WORLD_HEIGHT + radius * 2);
 		
 	}
 

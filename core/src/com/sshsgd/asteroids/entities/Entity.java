@@ -65,5 +65,13 @@ public abstract class Entity {
 	public void setY(float y) {
 		pos.y = y;
 	}
+
+	public float getRadius() {
+		return radius;
+	}
+
+	public void setRadius(float radius) {
+		this.radius = radius;
+	}
 	
 }

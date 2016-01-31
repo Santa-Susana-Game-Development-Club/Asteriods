@@ -20,6 +20,7 @@ public class PlayState extends GameState {
 	private MyCamera cam;
 	private Viewport view;
 	private Array<Asteroid> asteroids;
+	private Array<Particles> particles;
 	
 	private Player p;
 	
@@ -35,6 +36,7 @@ public class PlayState extends GameState {
 		view.update((int)Game.SIZE.x, (int)Game.SIZE.y, true);
 		p = new Player();
 		asteroids = new Array<Asteroid>();
+		particles = new Array<Particles>();
 		asteroids.add(new Asteroid(MathUtils.random(MyConstants.WOLRD_WIDTH), MathUtils.random(MyConstants.WORLD_HEIGHT), Size.Large));
 	}
 
@@ -55,11 +57,15 @@ public class PlayState extends GameState {
 					asteroids.add(new Asteroid(tempX, tempY, Size.Small));
 					break;
 				case Small:
+					particles.add(new Particles(asteroids.get(0)));
 					break;
 				}
 				asteroids.get(0).dispose();
 				asteroids.removeIndex(0);
 			}
+		}
+		if(MyInput.keyPressed(MyInput.START)) {
+			particles.add(new Particles(p));
 		}
 	}
 
@@ -73,12 +79,18 @@ public class PlayState extends GameState {
 
 	@Override
 	public void draw(SpriteBatch sb, ShapeRenderer sr, float dt) {
-		// TODO Auto-generated method stub
 		sr.begin(ShapeType.Line);
 		sr.setProjectionMatrix(cam.combined);
 		p.draw(sb, sr, dt);
 		for (Asteroid asteroid : asteroids) {
 			asteroid.draw(sb, sr, dt);
+		}
+		for (Particles particle : particles) {
+			particle.draw(sr, dt);
+			if(particle.isShouldRemove()) {
+				particles.removeValue(particle, true);
+				break;
+			}
 		}
 		sr.end();
 	}
@@ -90,8 +102,8 @@ public class PlayState extends GameState {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
+		particles.clear();
+		asteroids.clear();
 	}
 
 }
