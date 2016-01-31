@@ -27,17 +27,17 @@ public class Asteroid extends Entity {
 		case Large:
 			numVertices = 12;
 			radius = 75;
-			speed = MathUtils.random(20, 30);
+			speed = MathUtils.random(30, 40);
 			break;
 		case Medium:
 			numVertices = 10;
 			radius = 50;
-			speed = MathUtils.random(50, 60);
+			speed = MathUtils.random(60, 70);
 			break;
 		case Small:
 			numVertices = 8;
 			radius = 25;
-			speed = MathUtils.random(70, 100);
+			speed = MathUtils.random(80, 110);
 			break;
 		}
 		

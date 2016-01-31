@@ -18,7 +18,7 @@ public class MyConstants {
 	}
 	
 	public static final int WOLRD_WIDTH = 1280;
-	public static final int WORLD_HEIGHT = 720;
+	public static final int WORLD_HEIGHT = sixteenNineResolution(WOLRD_WIDTH);
 	
 	public static Vector2 randomVelocity(float speed) {
 		return velocityFromAngle(MathUtils.random(MathUtils.PI2), speed);

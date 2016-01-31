@@ -47,7 +47,11 @@ public abstract class Entity {
 		return pos;
 	}
 	public void setPos(Vector2 pos) {
-		this.pos = pos;
+		this.pos.set(pos);
+	}
+	
+	public void setPos(float x, float y) {
+		this.pos.set(x, y);
 	}
 	
 	public float getX() {
@@ -64,6 +68,58 @@ public abstract class Entity {
 	
 	public void setY(float y) {
 		pos.y = y;
+	}
+
+	public float getRadius() {
+		return radius;
+	}
+
+	public void setRadius(float radius) {
+		this.radius = radius;
+	}
+	
+	public Vector2[] getVertices() {
+		return vertices;
+	}
+
+	public float getRadians() {
+		return radians;
+	}
+
+	public void setRadians(float radians) {
+		this.radians = radians;
+	}
+
+	public float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(float speed) {
+		this.speed = speed;
+	}
+
+	public boolean intersects(Entity e) {
+		Vector2[] otherV = e.getVertices();
+		for(Vector2 v : otherV) {
+			if(contains(v)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean contains(Vector2 point) {
+		return contains(point.x, point.y);
+	}
+	
+	public boolean contains(float x, float y) {
+		boolean b = false;
+		for(int i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+			if((vertices[i].y > y) != (vertices[j].y > y) && (x < (vertices[j].x - vertices[i].x) * (y - vertices[i].y) / (vertices[j].y - vertices[i].y) + vertices[i].x)) {
+				b = !b;
+			}
+		}
+		return b;
 	}
 	
 }
